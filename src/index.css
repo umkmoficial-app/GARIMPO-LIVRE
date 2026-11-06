@@ -1,0 +1,340 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+/* ==========================================================================
+   ULTRA-REALISTIC LIQUID GLASS (GLASSMORPHISM) BUTTON SYSTEM
+   ========================================================================== */
+
+/* 1. Ultra-Realistic Blue Glass (Mercado Livre Azul Royal Oficial) */
+.glass-btn-blue,
+.btn-3d-blue {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  background: linear-gradient(180deg, rgba(54, 62, 150, 0.95) 0%, rgba(38, 44, 115, 0.96) 48%, rgba(24, 27, 68, 0.98) 100%);
+  color: #FFE600;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.75);
+  border-bottom-color: rgba(0, 0, 0, 0.45);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.35),
+    0 8px 22px -4px rgba(24, 27, 68, 0.5),
+    0 3px 6px -2px rgba(0, 0, 0, 0.2);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.glass-btn-blue::before,
+.btn-3d-blue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-btn-blue:hover::before,
+.btn-3d-blue:hover::before {
+  left: 140%;
+}
+
+.glass-btn-blue:hover,
+.btn-3d-blue:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.35),
+    0 14px 28px -4px rgba(24, 27, 68, 0.6),
+    0 6px 12px -2px rgba(0, 0, 0, 0.25);
+}
+
+.glass-btn-blue:active,
+.btn-3d-blue:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(0, 0, 0, 0.3),
+    0 3px 8px -2px rgba(24, 27, 68, 0.4);
+}
+
+/* 2. Ultra-Realistic Yellow Glass (Ofertas do Dia) */
+.glass-btn-yellow {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  background: linear-gradient(180deg, rgba(255, 243, 85, 0.96) 0%, rgba(255, 230, 0, 0.96) 50%, rgba(215, 190, 0, 0.98) 100%);
+  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-top-color: #FFFFFF;
+  border-bottom-color: rgba(160, 135, 0, 0.6);
+  box-shadow: 
+    inset 0 1px 1px 0 #FFFFFF,
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.22),
+    0 8px 20px -4px rgba(212, 190, 0, 0.55),
+    0 3px 6px -2px rgba(0, 0, 0, 0.15);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.glass-btn-yellow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-btn-yellow:hover::before {
+  left: 140%;
+}
+
+.glass-btn-yellow:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 
+    inset 0 1px 2px 0 #FFFFFF,
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.22),
+    0 14px 28px -4px rgba(212, 190, 0, 0.65),
+    0 6px 12px -2px rgba(0, 0, 0, 0.2);
+}
+
+.glass-btn-yellow:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* 3. Ultra-Realistic Red Glass (Ofertas Relâmpago) */
+.glass-btn-red {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  background: linear-gradient(180deg, rgba(255, 65, 65, 0.95) 0%, rgba(225, 0, 0, 0.96) 50%, rgba(155, 0, 0, 0.98) 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-top-color: rgba(255, 255, 255, 0.75);
+  border-bottom-color: rgba(75, 0, 0, 0.65);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.35),
+    0 8px 20px -4px rgba(220, 0, 0, 0.5),
+    0 3px 6px -2px rgba(0, 0, 0, 0.2);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.glass-btn-red::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-btn-red:hover::before {
+  left: 140%;
+}
+
+.glass-btn-red:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.35),
+    0 14px 28px -4px rgba(220, 0, 0, 0.65),
+    0 6px 12px -2px rgba(0, 0, 0, 0.25);
+}
+
+.glass-btn-red:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* 4. Ultra-Realistic Green Glass (Preço Imbatível & Ações de Sucesso) */
+.glass-btn-green {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  background: linear-gradient(180deg, rgba(0, 195, 95, 0.95) 0%, rgba(0, 166, 80, 0.96) 50%, rgba(0, 115, 55, 0.98) 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-top-color: rgba(255, 255, 255, 0.8);
+  border-bottom-color: rgba(0, 60, 30, 0.55);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.3),
+    0 8px 20px -4px rgba(0, 166, 80, 0.5),
+    0 3px 6px -2px rgba(0, 0, 0, 0.2);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.glass-btn-green::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-btn-green:hover::before {
+  left: 140%;
+}
+
+.glass-btn-green:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.3),
+    0 14px 28px -4px rgba(0, 166, 80, 0.65),
+    0 6px 12px -2px rgba(0, 0, 0, 0.25);
+}
+
+.glass-btn-green:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* 5. Ultra-Realistic Dark Obsidian Glass (Header, Modais e Botões Neutros) */
+.glass-btn-dark,
+.btn-3d-black {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  background: linear-gradient(180deg, rgba(42, 44, 56, 0.94) 0%, rgba(22, 24, 32, 0.97) 50%, rgba(10, 11, 15, 0.99) 100%);
+  color: #FFE600;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  border-bottom-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 3px 0 rgba(0, 0, 0, 0.4),
+    0 6px 18px -3px rgba(0, 0, 0, 0.45),
+    0 2px 5px -1px rgba(0, 0, 0, 0.25);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.glass-btn-dark::before,
+.btn-3d-black::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-btn-dark:hover::before,
+.btn-3d-black:hover::before {
+  left: 140%;
+}
+
+.glass-btn-dark:hover,
+.btn-3d-black:hover {
+  transform: translateY(-1.5px);
+  filter: brightness(1.12);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.75),
+    0 12px 24px -3px rgba(0, 0, 0, 0.55);
+}
+
+.glass-btn-dark:active,
+.btn-3d-black:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.card-3d {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.12), 0 8px 12px -4px rgba(0, 0, 0, 0.08);
+}
+
+/* Hide scrollbar for clean horizontal category list */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

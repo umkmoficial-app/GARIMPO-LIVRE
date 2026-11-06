@@ -1,0 +1,6 @@
+{
+  "name": "GARIMPO LIVRE - Ofertas do Mercado Livre",
+  "description": "Garimpado pra você, sem golpe. Ofertas relâmpago, preços imbatíveis e produtos internacionais verificados do Mercado Livre.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
