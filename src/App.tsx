@@ -7,7 +7,6 @@ import { QuickDealsGrid } from './components/QuickDealsGrid';
 import { ProductCard } from './components/ProductCard';
 import { PedirGarimpoModal } from './components/PedirGarimpoModal';
 import { DeliveryExplainerCard } from './components/DeliveryExplainerCard';
-import { AnimatedDeliveryVan } from './components/AnimatedDeliveryVan';
 import { TrustFooter } from './components/TrustFooter';
 import { Toast, ToastMessage } from './components/Toast';
 import {
@@ -165,11 +164,6 @@ export default function App() {
               className="w-full h-full object-cover"
             />
           </div>
-        </div>
-
-        {/* PISTA DE ANIMAÇÃO DA VAN OFICIAL MERCADO LIVRE */}
-        <div className="mt-2.5">
-          <AnimatedDeliveryVan isLargeFont={isLargeFont} />
         </div>
       </section>
 
