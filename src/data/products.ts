@@ -1,10 +1,10 @@
 import { Product, CategoryType, DealBadgeType, ShiftType } from '../types';
 
 // Imagens geradas reais no applet para uso prioritário
-export const HERO_IMAGE = '/src/assets/images/garimpo_hero_deals_1793938165209.jpg';
-export const GADGET_IMAGE = '/src/assets/images/product_smartphone_gadget_1793938164906.jpg';
-export const KITCHEN_IMAGE = '/src/assets/images/product_airfryer_kitchen_1793938166252.jpg';
-export const SNEAKER_IMAGE = '/src/assets/images/product_sneakers_sport_1793938166174.jpg';
+export const HERO_IMAGE = '/images/garimpo_hero_deals_1793938165209.jpg';
+export const GADGET_IMAGE = '/images/product_smartphone_gadget_1793938164906.jpg';
+export const KITCHEN_IMAGE = '/images/product_airfryer_kitchen_1793938166252.jpg';
+export const SNEAKER_IMAGE = '/images/product_sneakers_sport_1793938166174.jpg';
 
 // Catálogo base de itens reais e atrativos do Mercado Livre para formar 180 produtos
 interface RawProductDef {

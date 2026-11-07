@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { AFFILIATE_LINKS } from './utils/affiliateLinks';
 
-export const HERO_IMAGE = '/src/assets/images/garimpo_hero_deals_1793938165209.jpg';
+export const HERO_IMAGE = '/images/garimpo_hero_deals_1793938165209.jpg';
 
 export default function App() {
   // Catálogo com os 5 PRODUTOS REAIS cadastrados diretamente no código

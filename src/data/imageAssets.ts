@@ -1,20 +1,20 @@
 // Assets de imagens reais de alta fidelidade gerados para o Garimpo Livre
-export const HERO_IMAGE = '/src/assets/images/garimpo_hero_deals_1793938165209.jpg';
-export const GADGET_IMAGE = '/src/assets/images/product_smartphone_gadget_1793938164906.jpg';
-export const HEADPHONES_IMAGE = '/src/assets/images/headphones_audio_anc_1793950152624.jpg';
-export const KITCHEN_IMAGE = '/src/assets/images/product_airfryer_kitchen_1793938166252.jpg';
-export const COOKER_POTS_IMAGE = '/src/assets/images/pressure_cooker_pots_1793950165638.jpg';
-export const FAN_BLENDER_IMAGE = '/src/assets/images/fan_blender_appliance_1793950151608.jpg';
-export const SNEAKER_IMAGE = '/src/assets/images/product_sneakers_sport_1793938166174.jpg';
-export const APPAREL_IMAGE = '/src/assets/images/apparel_jacket_jogger_1793950152130.jpg';
-export const TOOLS_IMAGE = '/src/assets/images/product_tools_drill_1793949115987.jpg';
-export const TOOLBOX_IMAGE = '/src/assets/images/product_toolbox_ladder_1793949904899.jpg';
-export const FRIDGE_IMAGE = '/src/assets/images/product_fridge_kitchen_1793949116739.jpg';
-export const SMARTWATCH_IMAGE = '/src/assets/images/product_smartwatch_screen_1793949116463.jpg';
-export const BEAUTY_IMAGE = '/src/assets/images/product_beauty_skincare_1793949117399.jpg';
-export const TV_LAPTOP_IMAGE = '/src/assets/images/product_tv_laptop_1793949903807.jpg';
-export const BEDDING_IMAGE = '/src/assets/images/product_bedding_blanket_1793949905893.jpg';
-export const PET_IMAGE = '/src/assets/images/product_pet_accessories_1793949904949.jpg';
+export const HERO_IMAGE = '/images/garimpo_hero_deals_1793938165209.jpg';
+export const GADGET_IMAGE = '/images/product_smartphone_gadget_1793938164906.jpg';
+export const HEADPHONES_IMAGE = '/images/headphones_audio_anc_1793950152624.jpg';
+export const KITCHEN_IMAGE = '/images/product_airfryer_kitchen_1793938166252.jpg';
+export const COOKER_POTS_IMAGE = '/images/pressure_cooker_pots_1793950165638.jpg';
+export const FAN_BLENDER_IMAGE = '/images/fan_blender_appliance_1793950151608.jpg';
+export const SNEAKER_IMAGE = '/images/product_sneakers_sport_1793938166174.jpg';
+export const APPAREL_IMAGE = '/images/apparel_jacket_jogger_1793950152130.jpg';
+export const TOOLS_IMAGE = '/images/product_tools_drill_1793949115987.jpg';
+export const TOOLBOX_IMAGE = '/images/product_toolbox_ladder_1793949904899.jpg';
+export const FRIDGE_IMAGE = '/images/product_fridge_kitchen_1793949116739.jpg';
+export const SMARTWATCH_IMAGE = '/images/product_smartwatch_screen_1793949116463.jpg';
+export const BEAUTY_IMAGE = '/images/product_beauty_skincare_1793949117399.jpg';
+export const TV_LAPTOP_IMAGE = '/images/product_tv_laptop_1793949903807.jpg';
+export const BEDDING_IMAGE = '/images/product_bedding_blanket_1793949905893.jpg';
+export const PET_IMAGE = '/images/product_pet_accessories_1793949904949.jpg';
 
 /**
  * Resolve a imagem real de alta fidelidade do produto:

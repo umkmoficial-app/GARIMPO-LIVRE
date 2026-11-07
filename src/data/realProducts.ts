@@ -1,15 +1,15 @@
 import { Product } from '../types';
 
-export const PERFUME_IMAGE = '/src/assets/images/perfume_asad_bourbon_1793952293980.jpg';
-export const COMPRESSOR_IMAGE = '/src/assets/images/compressor_ar_portatil_1793952294165.jpg';
-export const FECHADURA_IMAGE = '/src/assets/images/fechadura_digital_intelbras_1793952294535.jpg';
-export const TENIS_IMAGE = '/src/assets/images/product_sneakers_sport_1793938166174.jpg';
-export const ESMERILHADEIRA_IMAGE = '/src/assets/images/esmerilhadeira_angular_1793952326110.jpg';
-export const CAMPAINHA_IMAGE = '/src/assets/images/campainha_sem_fio_1793952309996.jpg';
-export const LENCOL_IMAGE = '/src/assets/images/product_bedding_blanket_1793949905893.jpg';
-export const CADEIRA_IMAGE = '/src/assets/images/cadeira_ergonomica_nr17_1793952310947.jpg';
-export const POWERBANK_IMAGE = '/src/assets/images/powerbank_solar_1793952309875.jpg';
-export const SHORTS_IMAGE = '/src/assets/images/shorts_dryfit_masculino_1793952326971.jpg';
+export const PERFUME_IMAGE = '/images/perfume_asad_bourbon_1793952293980.jpg';
+export const COMPRESSOR_IMAGE = '/images/compressor_ar_portatil_1793952294165.jpg';
+export const FECHADURA_IMAGE = '/images/fechadura_digital_intelbras_1793952294535.jpg';
+export const TENIS_IMAGE = '/images/product_sneakers_sport_1793938166174.jpg';
+export const ESMERILHADEIRA_IMAGE = '/images/esmerilhadeira_angular_1793952326110.jpg';
+export const CAMPAINHA_IMAGE = '/images/campainha_sem_fio_1793952309996.jpg';
+export const LENCOL_IMAGE = '/images/product_bedding_blanket_1793949905893.jpg';
+export const CADEIRA_IMAGE = '/images/cadeira_ergonomica_nr17_1793952310947.jpg';
+export const POWERBANK_IMAGE = '/images/powerbank_solar_1793952309875.jpg';
+export const SHORTS_IMAGE = '/images/shorts_dryfit_masculino_1793952326971.jpg';
 
 export const REAL_PRODUCTS: Product[] = [
   {
