@@ -7,6 +7,8 @@ import { QuickDealsGrid } from './components/QuickDealsGrid';
 import { ProductCard } from './components/ProductCard';
 import { PedirGarimpoModal } from './components/PedirGarimpoModal';
 import { DeliveryExplainerCard } from './components/DeliveryExplainerCard';
+import { AntiFraudCard } from './components/AntiFraudCard';
+import { TrustBadgesRow } from './components/TrustBadgesRow';
 import { TrustFooter } from './components/TrustFooter';
 import { Toast, ToastMessage } from './components/Toast';
 import {
@@ -198,6 +200,9 @@ export default function App() {
             />
           ))}
         </div>
+
+        {/* Selos Visuais de Confiança: Compra Garantida & Mercado Pontos */}
+        <TrustBadgesRow isLargeFont={isLargeFont} />
       </main>
 
       {/* 6. CARD EXPLICATIVO: PROCESSO DE COMPRA E LOGÍSTICA MERCADO LIVRE */}
@@ -206,7 +211,10 @@ export default function App() {
         onOpenPedirGarimpo={() => setIsPedirGarimpoOpen(true)}
       />
 
-      {/* 7. MODAL PEDIR GARIMPO */}
+      {/* 7. CARD INTELIGÊNCIA ANTIFRAUDE: DETECÇÃO DE LINKS OFICIAIS E BLOQUEIO DE GOLPES */}
+      <AntiFraudCard isLargeFont={isLargeFont} />
+
+      {/* 8. MODAL PEDIR GARIMPO */}
       <PedirGarimpoModal
         isOpen={isPedirGarimpoOpen}
         onClose={() => setIsPedirGarimpoOpen(false)}
