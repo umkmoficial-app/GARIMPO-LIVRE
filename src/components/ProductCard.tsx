@@ -146,8 +146,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           </div>
 
-          {/* Preço Novo Grande em Verde (#00A650) */}
-          <div className="flex items-baseline gap-1">
+          {/* Preço Novo Grande em Verde (#00A650) com destaque 'no Pix' */}
+          <div className="flex items-center gap-2 flex-wrap">
             <span
               className={`font-black text-[#00A650] tracking-tight ${
                 isLargeFont ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'
@@ -155,10 +155,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             >
               {formatBRL(product.price)}
             </span>
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-black bg-emerald-50 text-emerald-700 border border-emerald-300 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00A650]"></span>
+              no Pix
+            </span>
           </div>
 
           {/* Parcelamento Amigável */}
-          <p className="text-xs font-semibold text-neutral-700 mt-0.5">
+          <p className="text-xs font-semibold text-neutral-600 mt-1">
             {product.installments}
           </p>
 
