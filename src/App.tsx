@@ -141,7 +141,7 @@ export default function App() {
               <span>Ofertas Verificadas Mercado Livre</span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#2D3277] leading-tight mb-2">
-              Até 50% de Desconto Real com Entrega FULL
+              Até 80% de Desconto Real com Entrega FULL
             </h2>
             <p className="text-sm sm:text-base font-bold text-neutral-900 mb-5 max-w-xl">
               5 produtos selecionados a dedo com compra protegida. Clique em <strong>VER OFERTA</strong> e compre diretamente no anúncio oficial.
