@@ -110,7 +110,7 @@ export const AntiFraudCard: React.FC<AntiFraudCardProps> = ({ isLargeFont }) => 
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 pt-2 pb-10 w-full">
+    <section className="w-full mt-8">
       <div className="bg-white rounded-3xl border-3 border-[#2D3277] shadow-[0_8px_0_#2D3277] overflow-hidden">
         {/* Cabeçalho do Card: Estilo Oficial com Destaque de Segurança */}
         <div className="bg-[#2D3277] text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-3 border-[#FFE600]">

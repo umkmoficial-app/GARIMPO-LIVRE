@@ -202,6 +202,9 @@ export default function App() {
           ))}
         </div>
 
+        {/* CARD IA DE PROTEÇÃO ATIVA EMBAIXO DOS CARDS DE VITRINE DE OFERTAS REAIS */}
+        <AntiFraudCard isLargeFont={isLargeFont} />
+
         {/* Selos Visuais de Confiança: Compra Garantida & Mercado Pontos */}
         <TrustBadgesRow isLargeFont={isLargeFont} />
       </main>
@@ -212,10 +215,7 @@ export default function App() {
         onOpenPedirGarimpo={() => setIsPedirGarimpoOpen(true)}
       />
 
-      {/* 7. CARD INTELIGÊNCIA ANTIFRAUDE: DETECÇÃO DE LINKS OFICIAIS E BLOQUEIO DE GOLPES */}
-      <AntiFraudCard isLargeFont={isLargeFont} />
-
-      {/* 8. MODAL PEDIR GARIMPO */}
+      {/* 7. MODAL PEDIR GARIMPO */}
       <PedirGarimpoModal
         isOpen={isPedirGarimpoOpen}
         onClose={() => setIsPedirGarimpoOpen(false)}
