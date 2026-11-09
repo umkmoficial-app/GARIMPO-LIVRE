@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Product } from './types';
 import { REAL_PRODUCTS } from './data/realProducts';
 import { Header } from './components/Header';
+import { CountdownTimer } from './components/CountdownTimer';
 import { HeroSearch } from './components/HeroSearch';
 import { QuickDealsGrid } from './components/QuickDealsGrid';
 import { ProductCard } from './components/ProductCard';
@@ -120,12 +121,12 @@ export default function App() {
   return (
     <div className={`min-h-screen bg-[#F5F5F5] flex flex-col ${isLargeFont ? 'text-lg' : 'text-base'}`}>
       {/* 1. TOPO: Identidade Mercado Livre com Azul Oficial #2D3277 e Amarelo #FFE600 */}
-      <Header
-        isLargeFont={isLargeFont}
-        onToggleFontSize={() => setIsLargeFont((prev) => !prev)}
-      />
+      <Header />
 
-      {/* 2. BOTÃO PEDIR GARIMPO */}
+      {/* 2. CRONÔMETRO REGRESSIVO EM TEMPO REAL: CICLO DE 10 HORAS INFINITO */}
+      <CountdownTimer isLargeFont={isLargeFont} />
+
+      {/* 3. BOTÃO PEDIR GARIMPO */}
       <HeroSearch
         onOpenPedirGarimpo={() => setIsPedirGarimpoOpen(true)}
         isLargeFont={isLargeFont}
