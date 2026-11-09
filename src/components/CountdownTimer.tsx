@@ -128,7 +128,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ isLargeFont }) =
                 isLargeFont ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
               }`}
             >
-              Próxima levada de ofertas relâmpagos do site oficial do Mercado Livre em:
+              Ofertas relâmpago do site oficial do Mercado Livre expiram em:
             </h3>
           </div>
         </div>

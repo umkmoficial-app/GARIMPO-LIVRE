@@ -31,6 +31,8 @@ export interface Product {
   description?: string;
   targetAudience?: 'todos' | 'idosos' | 'jovens' | 'geral';
   highlightTag?: string;
+  isLowStock?: boolean;
+  lowStockCount?: number;
 }
 
 export interface GarimpoRequest {

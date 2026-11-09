@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Product } from './types';
-import { REAL_PRODUCTS } from './data/realProducts';
+import {
+  getCurrent15MinBatch,
+  getCurrent15MinBatchIndex,
+  getReplacementProduct,
+} from './data/realProducts';
 import { Header } from './components/Header';
 import { CountdownTimer } from './components/CountdownTimer';
 import { HeroSearch } from './components/HeroSearch';
@@ -22,8 +26,9 @@ import { AFFILIATE_LINKS } from './utils/affiliateLinks';
 export const HERO_IMAGE = '/images/garimpo_hero_deals_1793938165209.jpg';
 
 export default function App() {
-  // Catálogo com os 5 PRODUTOS REAIS cadastrados diretamente no código
-  const [productsList, setProductsList] = useState<Product[]>(REAL_PRODUCTS);
+  // Rotação infinita: 5 produtos sem duplicatas a cada 15 minutos
+  const [currentBatchIndex, setCurrentBatchIndex] = useState<number>(() => getCurrent15MinBatchIndex());
+  const [productsList, setProductsList] = useState<Product[]>(() => getCurrent15MinBatch());
 
   // Acessibilidade: Modo de fonte grande para idosos
   const [isLargeFont, setIsLargeFont] = useState<boolean>(false);
@@ -49,61 +54,56 @@ export default function App() {
     }, 4500);
   }, []);
 
-  // Função para rotacionar/embaralhar a vitrine
-  const shuffleVitrine = useCallback(
-    (isManual: boolean = false) => {
-      setProductsList((prev) => {
-        const copy = [...prev];
-        for (let i = copy.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [copy[i], copy[j]] = [copy[j], copy[i]];
-        }
-        return copy;
-      });
+  // Rotação infinita silenciosa: a cada 15 minutos entram 5 novos produtos sem repetição
+  useEffect(() => {
+    const checkBatchRotation = () => {
+      const now = Date.now();
+      const newIndex = getCurrent15MinBatchIndex(now);
 
-      if (isManual) {
+      // Virou o bloco de 15 minutos: troca o lote de 5 produtos sem duplicatas
+      if (newIndex !== currentBatchIndex) {
+        setCurrentBatchIndex(newIndex);
+        const newBatch = getCurrent15MinBatch(now);
+        setProductsList(newBatch);
         addToast(
-          'Vitrine Embaralhada!',
-          'A ordem das 5 ofertas reais foi reorganizada.',
+          'Vitrine Atualizada!',
+          'Novos produtos oficiais verificados entraram na vitrine.',
           'success'
         );
       }
-    },
-    [addToast]
-  );
+    };
 
-  // Timer automático de 15 minutos para embaralhar a vitrine
-  useEffect(() => {
-    const timer = setInterval(() => {
-      shuffleVitrine(false);
-      addToast(
-        'Vitrine Reorganizada!',
-        'A vitrine foi rotacionada automaticamente (ciclo de 15 minutos).',
-        'info'
-      );
-    }, 15 * 60 * 1000);
+    checkBatchRotation();
+    const timer = setInterval(checkBatchRotation, 5000);
 
-    return () => clearInterval(timer);
-  }, [shuffleVitrine, addToast]);
+    const handleSync = () => {
+      checkBatchRotation();
+    };
+    window.addEventListener('focus', handleSync);
+    document.addEventListener('visibilitychange', handleSync);
 
-  // Lógica de substituição imediata ao marcar indisponível
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('focus', handleSync);
+      document.removeEventListener('visibilitychange', handleSync);
+    };
+  }, [currentBatchIndex, addToast]);
+
+  // Substituição por indisponibilidade garantindo que NUNCA haja produtos repetidos na vitrine
   const handleMarkUnavailable = useCallback(
     (productId: string) => {
       setProductsList((prev) => {
-        const item = prev.find((p) => p.id === productId);
-        if (!item) return prev;
-        const others = prev.filter((p) => p.id !== productId);
-        const updatedItem = {
-          ...item,
-          highlightTag: 'Estoque Reaberto Mercado Livre',
-          rating: 4.9,
-        };
-        return [...others, updatedItem];
+        const currentIds = prev.map((p) => p.id);
+        const replacement = getReplacementProduct(currentIds);
+        if (!replacement) return prev;
+
+        // Substitui mantendo todos os 5 produtos estritamente únicos
+        return prev.map((p) => (p.id === productId ? replacement : p));
       });
 
       addToast(
-        'Oferta Atualizada!',
-        'A vitrine foi reorganizada com a disponibilidade mais recente no Mercado Livre.',
+        'Produto Substituído!',
+        'Item esgotado substituído por outra oferta oficial disponível sem repetição.',
         'success'
       );
     },
@@ -178,7 +178,7 @@ export default function App() {
         {/* Cabeçalho da Vitrine */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b-2 border-neutral-200">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-2xl sm:text-3xl font-black text-[#2D3277] tracking-tight">
                 Vitrine de Ofertas Reais
               </h2>
@@ -187,6 +187,9 @@ export default function App() {
                 Links Diretos Oficiais
               </span>
             </div>
+            <p className="text-xs sm:text-sm text-neutral-600 font-semibold mt-1">
+              Produtos verificados com compra protegida e garantia oficial do Mercado Livre.
+            </p>
           </div>
         </div>
 

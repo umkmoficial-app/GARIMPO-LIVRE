@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Product } from '../types';
 import { openAffiliateOffer } from '../utils/affiliateLinks';
 import {
@@ -9,6 +9,7 @@ import {
   ArrowRight,
   ShieldCheck,
   RotateCcw,
+  Flame,
 } from 'lucide-react';
 
 interface ProductCardProps {
@@ -23,6 +24,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onMarkUnavailable,
 }) => {
   const [imageError, setImageError] = useState(false);
+
+  // Selo "Últimas unidades": aparece de forma randômica / dinâmica para alguns produtos (~50% a 60%)
+  // Mantém cálculo estável e balanceado por produto para evitar oscilações durante cliques ou re-renderizações
+  const isLowStock = useMemo(() => {
+    if (product.isLowStock !== undefined) return product.isLowStock;
+    const num = parseInt(product.id.replace(/\D/g, ''), 10) || 1;
+    return (num % 2 === 0) || (num === 7) || (num === 1);
+  }, [product.id, product.isLowStock]);
+
+  const stockUnits = useMemo(() => {
+    if (product.lowStockCount) return product.lowStockCount;
+    const num = parseInt(product.id.replace(/\D/g, ''), 10) || 1;
+    return ((num * 3) % 4) + 2; // Simula entre 2 e 5 unidades restantes
+  }, [product.id, product.lowStockCount]);
 
   // Formatação de Moeda Brasileira
   const formatBRL = (value: number) => {
@@ -101,6 +116,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             {product.highlightTag}
           </div>
         )}
+
       </div>
 
       {/* Informações do Produto */}
@@ -136,6 +152,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Bloco de Preço */}
         <div className="pt-2 border-t border-neutral-100">
+          {/* Selo 'Últimas unidades' Oficial Mercado Livre - Urgência para Conversão */}
+          {isLowStock && (
+            <div className="mb-2 flex items-center">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 text-white rounded-lg font-black text-xs uppercase tracking-wide shadow-[0_2px_0_#B33600] border border-white/20">
+                <Flame className="w-3.5 h-3.5 fill-yellow-200 text-yellow-200 shrink-0 animate-bounce" />
+                <span>Últimas unidades</span>
+                <span className="text-[10px] font-extrabold text-yellow-100 bg-black/25 px-1.5 py-0.5 rounded ml-0.5">
+                  Restam {stockUnits}
+                </span>
+              </span>
+            </div>
+          )}
+
           {/* Preço Antigo Riscado + % Desconto em Badge Amarelo */}
           <div className="flex items-center gap-2 mb-1">
             <span className="text-xs text-neutral-500 line-through font-semibold">
