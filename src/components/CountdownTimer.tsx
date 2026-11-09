@@ -5,8 +5,9 @@ interface CountdownTimerProps {
   isLargeFont?: boolean;
 }
 
-const STORAGE_KEY = 'garimpo_relogio_10h_target_v3';
-const CYCLE_MS = 10 * 60 * 60 * 1000; // 10 horas exatas
+const STORAGE_KEY = 'garimpo_relogio_10h_v4';
+const CYCLE_MS = 10 * 60 * 60 * 1000; // 10 horas de ciclo total
+const INITIAL_REMAINING_MS = (9 * 60 + 10) * 60 * 1000; // Começar agora em 9 horas e 10 minutos
 
 export const CountdownTimer: React.FC<CountdownTimerProps> = ({ isLargeFont }) => {
   const [timeLeft, setTimeLeft] = useState<{
@@ -15,13 +16,13 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ isLargeFont }) =
     seconds: string;
     percent: number;
   }>({
-    hours: '10',
-    minutes: '00',
+    hours: '09',
+    minutes: '10',
     seconds: '00',
-    percent: 100,
+    percent: 91.6,
   });
 
-  // Função para obter ou criar o timestamp alvo de 10 horas
+  // Função para obter ou criar o timestamp alvo calibrado em 9h 10min
   const getTargetTimestamp = useCallback((): number => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
@@ -35,12 +36,12 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ isLargeFont }) =
         }
       }
 
-      // Reinicia para exatamente 10 horas a partir de agora
-      const newTarget = now + CYCLE_MS;
+      // Inicializa exatamente em 9 horas e 10 minutos a partir de agora
+      const newTarget = now + INITIAL_REMAINING_MS;
       localStorage.setItem(STORAGE_KEY, newTarget.toString());
       return newTarget;
     } catch {
-      return Date.now() + CYCLE_MS;
+      return Date.now() + INITIAL_REMAINING_MS;
     }
   }, []);
 
