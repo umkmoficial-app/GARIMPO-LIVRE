@@ -5,6 +5,7 @@ export const AFFILIATE_LINKS = {
   RELAMPAGO: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning&matt_tool=sm20240625081530',
   IMBATIVEL: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579&matt_tool=sm20240625081530',
   INTERNACIONAL: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB1442406-1&matt_tool=sm20240625081530',
+  ENTREGA_24H: 'https://www.mercadolivre.com.br/ofertas?shipping_cost=fulfillment&shipping=fulfillment&matt_tool=sm20240625081530',
 };
 
 /**

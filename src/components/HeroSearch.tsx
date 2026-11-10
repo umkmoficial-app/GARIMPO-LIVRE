@@ -17,7 +17,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         <div className="w-full flex flex-col sm:flex-row items-center justify-center">
           <button
             onClick={onOpenPedirGarimpo}
-            className={`glass-btn-blue w-full sm:w-auto px-10 py-3.5 rounded-2xl font-black flex items-center justify-center gap-2.5 text-center tracking-wide ${
+            className={`glass-btn-blue w-full sm:w-auto px-10 py-3.5 rounded-2xl font-black flex items-center justify-center gap-2.5 text-center tracking-wide cursor-pointer ${
               isLargeFont ? 'text-xl' : 'text-lg'
             }`}
           >

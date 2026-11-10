@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Sparkles, CheckCircle2, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { CategoryType } from '../types';
 import { AFFILIATE_LINKS } from '../utils/affiliateLinks';
@@ -22,6 +22,13 @@ export const PedirGarimpoModal: React.FC<PedirGarimpoModalProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('todos');
   const [budgetRange, setBudgetRange] = useState<string>('qualquer');
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setProductName(initialQuery || '');
+      setIsSuccess(false);
+    }
+  }, [isOpen, initialQuery]);
 
   if (!isOpen) return null;
 

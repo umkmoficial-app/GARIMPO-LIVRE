@@ -128,7 +128,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ isLargeFont }) =
                 isLargeFont ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
               }`}
             >
-              Ofertas relâmpago do site oficial do Mercado Livre expiram em:
+              OFERTAS RELÂMPAGO ESCANEADAS PELA INTELIGÊNCIA ARTIFICIAL A CADA 10 HORAS NO SITE OFICIAL DO MERCADO LIVRE:
             </h3>
           </div>
         </div>

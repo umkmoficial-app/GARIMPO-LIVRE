@@ -7,7 +7,7 @@ export const ESMERILHADEIRA_IMAGE = '/images/esmerilhadeira_angular_179395232611
 export const CADEIRA_IMAGE = '/images/cadeira_ergonomica_nr17_1793952310947.jpg';
 export const SHORTS_IMAGE = '/images/shorts_dryfit_masculino_1793952326971.jpg';
 
-export const CAIXA_SOM_IMAGE = '/images/caixa_som_usb_3w.jpg';
+export const CAIXA_SOM_COOLMUSIC_IMAGE = '/images/caixa_som_coolmusic_6w.jpg';
 export const LANTERNA_IMAGE = '/images/lanterna_tatica_t9.jpg';
 export const CHALEIRA_IMAGE = '/images/chaleira_eletrica_inox.jpg';
 export const CUECAS_LUPO_IMAGE = '/images/cuecas_lupo_boxer.jpg';
@@ -131,23 +131,23 @@ export const BATCH_1: Product[] = [
 export const BATCH_2: Product[] = [
   {
     id: 'prod_real_11',
-    title: 'Caixa de Som Portátil USB P2 Preto para PC e Notebook 3W',
+    title: 'Caixa Caixinha De Som Potente Pc Notebook Subwoofer Para Computador 6w Usb P2 Alto Falante De Mesa Coolmusic',
     category: 'eletronicos',
     badge: 'RELÂMPAGO',
-    oldPrice: 28.99,
-    price: 20.90,
-    discountPercent: 27,
+    oldPrice: 49.90,
+    price: 23.40,
+    discountPercent: 53,
     rating: 4.7,
-    reviewsCount: 1169,
+    reviewsCount: 14000,
     freeShipping: true,
     shift: 'manha',
     isAvailable: true,
-    image: CAIXA_SOM_IMAGE,
-    description: 'Som estéreo nítido de 3W para computador e notebook com conexão P2 e alimentação USB 5V portátil.',
-    installments: 'Preço à vista ou no Pix R$ 20,90',
-    affiliateUrl: 'https://www.mercadolivre.com.br/caixa-de-som-portatil-usb-p2-preto-para-pc-e-notebook-3w/p/MLB56176426?pdp_filters=item_id%3AMLB5321711284&matt_tool=sm20240625081530',
+    image: CAIXA_SOM_COOLMUSIC_IMAGE,
+    description: 'Potência de 6W RMS com som estéreo nítido, conexão P2 de 3.5mm para áudio e USB para alimentação direta no PC e notebook.',
+    installments: 'Preço à vista ou no Pix R$ 23,40',
+    affiliateUrl: 'https://www.mercadolivre.com.br/caixa-caixinha-de-som-potente-pc-notebook-subwoofer-para-computador-6w-usb-p2-alto-falante-de-mesa-coolmusic/p/MLB53988081?pdp_filters=item_id%3AMLB5677676192&matt_tool=sm20240625081530',
     targetAudience: 'todos',
-    highlightTag: 'USB 5V Portátil',
+    highlightTag: 'Potência 6W RMS',
     isLowStock: true,
     lowStockCount: 4,
   },

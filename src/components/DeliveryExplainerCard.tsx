@@ -1,7 +1,7 @@
 import React from 'react';
 import { Truck, ShieldCheck, PackageCheck, Zap, Sparkles } from 'lucide-react';
 
-export const LOGISTICS_IMAGE = '/images/mercadolivre_logistica_entrega_1793982579567.jpg';
+export const LOGISTICS_IMAGE = '/images/mercadolivre_logistica_entrega_homem.jpg';
 
 interface DeliveryExplainerCardProps {
   isLargeFont: boolean;
