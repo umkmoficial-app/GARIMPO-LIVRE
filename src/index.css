@@ -338,3 +338,20 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==========================================================================
+   EFEITO FOCO DE LUZ NEON CIRCULANDO 360º (5 SEGUNDOS)
+   ========================================================================== */
+@keyframes neonSpin360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-360-spin {
+  animation: neonSpin360 5s linear infinite;
+}
+

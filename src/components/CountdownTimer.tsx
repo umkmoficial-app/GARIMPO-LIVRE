@@ -128,7 +128,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ isLargeFont }) =
                 isLargeFont ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
               }`}
             >
-              OFERTAS RELÂMPAGO ESCANEADAS PELA INTELIGÊNCIA ARTIFICIAL A CADA 10 HORAS NO SITE OFICIAL DO MERCADO LIVRE:
+              OFERTAS ESCANEADAS PELA INTELIGÊNCIA ARTIFICIAL A CADA 10H NO SITE OFICIAL DO MERCADO LIVRE:
             </h3>
           </div>
         </div>
