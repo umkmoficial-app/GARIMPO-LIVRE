@@ -89,18 +89,42 @@ export const DeliveryExplainerCard: React.FC<DeliveryExplainerCardProps> = ({
             </div>
           </div>
 
-          {/* Botões de ação oficial */}
+          {/* Botões de ação oficial com Efeito Neon 360º */}
           {onOpenPedirGarimpo && (
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <button
                 type="button"
                 onClick={onOpenPedirGarimpo}
-                className={`glass-btn-blue px-6 py-3 rounded-xl font-black text-sm flex items-center gap-2 ${
-                  isLargeFont ? 'text-base py-3.5 px-7' : ''
-                }`}
+                className="group relative p-[3px] rounded-2xl font-black overflow-hidden cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_8px_25px_-5px_rgba(24,27,68,0.5)] inline-flex"
+                title="Experimentar Pedir Garimpo com inteligência oficial"
               >
-                <Sparkles className="w-4 h-4 text-[#FFE600] fill-[#FFE600]" />
-                <span>EXPERIMENTAR &ldquo;PEDIR GARIMPO&rdquo;</span>
+                {/* 1. Feixe de Foco Neon Nítido Circulando 360º com Intervalo de 5 Segundos */}
+                <span
+                  className="absolute -inset-[150%] neon-360-spin pointer-events-none"
+                  style={{
+                    background:
+                      'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, #00F0FF 310deg, #FFE600 345deg, #FFFFFF 360deg)',
+                  }}
+                />
+
+                {/* 2. Brilho/Glow Neon Difuso Circulando 360º com Intervalo de 5 Segundos */}
+                <span
+                  className="absolute -inset-[150%] neon-360-spin blur-md opacity-90 pointer-events-none"
+                  style={{
+                    background:
+                      'conic-gradient(from 0deg, transparent 0deg, transparent 270deg, #00F0FF 315deg, #FFE600 350deg, #FFFFFF 360deg)',
+                  }}
+                />
+
+                {/* 3. Corpo Interno do Botão em Vidro Líquido Azul Oficial com Texto Amarelo */}
+                <span
+                  className={`relative z-10 w-full h-full px-6 py-3 rounded-[13px] bg-gradient-to-b from-[#363E96] via-[#262C73] to-[#181B44] text-[#FFE600] font-black text-sm flex items-center justify-center gap-2 tracking-wide shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),inset_0_-2px_3px_rgba(0,0,0,0.4)] ${
+                    isLargeFont ? 'text-base py-3.5 px-7' : ''
+                  }`}
+                >
+                  <Sparkles className="w-4 h-4 text-[#FFE600] fill-[#FFE600] shrink-0" />
+                  <span>EXPERIMENTAR &ldquo;PEDIR GARIMPO&rdquo;</span>
+                </span>
               </button>
             </div>
           )}
