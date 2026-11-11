@@ -92,6 +92,9 @@ export const TrustFooter: React.FC<TrustFooterProps> = ({ isLargeFont }) => {
         {/* Informações Legais e Créditos */}
         <div className="mt-6 pt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
           <div className="flex items-center gap-2">
+            <div className="w-5 h-5 bg-[#FFE600] rounded-md flex items-center justify-center p-0.5 border border-yellow-300 shrink-0">
+              <img src="/images/logo_g_azul.png" alt="G" className="w-full h-full object-contain" />
+            </div>
             <span className="font-black text-[#FFE600] text-sm">GARIMPO LIVRE</span>
             <span>&copy; {new Date().getFullYear()} • Garimpado pra você, sem golpe.</span>
           </div>
