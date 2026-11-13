@@ -353,5 +353,5 @@
 
 .neon-360-spin {
   animation: neonSpin360 5s linear infinite;
+  will-change: transform;
 }
-

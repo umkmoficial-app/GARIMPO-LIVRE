@@ -41,9 +41,36 @@ export const PedirGarimpoModal: React.FC<PedirGarimpoModalProps> = ({
   };
 
   const handleOpenDirectML = () => {
-    // Abre a busca direta do produto no Mercado Livre com link de afiliado oficial
-    const queryEncoded = encodeURIComponent(productName.trim() || 'ofertas');
-    const url = `https://lista.mercadolivre.com.br/${queryEncoded}?matt_tool=sm20240625081530`;
+    const rawQuery = productName.trim();
+    if (!rawQuery) {
+      window.open(
+        'https://www.mercadolivre.com.br/ofertas?matt_tool=sm20240625081530',
+        '_blank',
+        'noopener,noreferrer'
+      );
+      onClose();
+      setIsSuccess(false);
+      return;
+    }
+
+    // Cria o slug otimizado para o Mercado Livre
+    const slug = rawQuery
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    // Aplica o filtro de orçamento caso o usuário tenha selecionado
+    let priceRangeSlug = '';
+    if (budgetRange === 'ate150') priceRangeSlug = '_PriceRange_0-150';
+    else if (budgetRange === 'ate500') priceRangeSlug = '_PriceRange_0-500';
+    else if (budgetRange === 'ate1000') priceRangeSlug = '_PriceRange_0-1000';
+    else if (budgetRange === 'ate2000') priceRangeSlug = '_PriceRange_0-2000';
+    else if (budgetRange === 'premium') priceRangeSlug = '_PriceRange_2000-0';
+
+    // Pedir Garimpo: Ordenação padrão por Mais Relevantes (melhores vendedores, avaliações e anúncios oficiais)
+    const url = `https://lista.mercadolivre.com.br/${slug}${priceRangeSlug}?matt_tool=sm20240625081530`;
     window.open(url, '_blank', 'noopener,noreferrer');
     onClose();
     setIsSuccess(false);
@@ -196,12 +223,16 @@ export const PedirGarimpoModal: React.FC<PedirGarimpoModalProps> = ({
                 Localizamos os melhores vendedores e preços verificados para &ldquo;{productName}&rdquo; no Mercado Livre.
               </p>
 
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-[#181B44] border-2 border-[#2D3277]/30 rounded-full text-xs font-black shadow-xs">
+                <span>✨ Mais Relevantes: Melhores anúncios e vendedores oficiais selecionados!</span>
+              </div>
+
               <div className="pt-2">
                 <button
                   onClick={handleOpenDirectML}
                   className="glass-btn-yellow w-full py-4 rounded-2xl font-black text-base sm:text-lg flex items-center justify-center gap-2"
                 >
-                  <span>IR DIRETO PARA A OFERTA NO MERCADO LIVRE</span>
+                  <span>IR DIRETO PARA A MELHOR OFERTA NO MERCADO LIVRE</span>
                   <ArrowRight className="w-5 h-5 stroke-[3]" />
                 </button>
               </div>

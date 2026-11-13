@@ -14,7 +14,7 @@ export const QuickDealsGrid: React.FC<QuickDealsGridProps> = ({ isLargeFont }) =
       url: AFFILIATE_LINKS.TODAS,
       bgClass: 'glass-btn-yellow',
       iconClass: 'text-[#E60000] fill-[#E60000]',
-      badgeText: 'Mais Populares',
+      badgeText: 'Mais Relevantes',
     },
     {
       title: 'Ofertas Relâmpago',
@@ -22,7 +22,7 @@ export const QuickDealsGrid: React.FC<QuickDealsGridProps> = ({ isLargeFont }) =
       url: AFFILIATE_LINKS.RELAMPAGO,
       bgClass: 'glass-btn-red',
       iconClass: 'text-[#FFE600] fill-[#FFE600] animate-pulse',
-      badgeText: 'Tempo Limitado',
+      badgeText: 'Mais Baratas 1º',
     },
     {
       title: 'Preço Imbatível',
@@ -30,7 +30,7 @@ export const QuickDealsGrid: React.FC<QuickDealsGridProps> = ({ isLargeFont }) =
       url: AFFILIATE_LINKS.IMBATIVEL,
       bgClass: 'glass-btn-green',
       iconClass: 'text-[#FFE600] fill-[#FFE600]',
-      badgeText: 'Menor Preço',
+      badgeText: 'Mais Relevantes',
     },
     {
       title: 'Ofertas Internacionais',
@@ -38,7 +38,7 @@ export const QuickDealsGrid: React.FC<QuickDealsGridProps> = ({ isLargeFont }) =
       url: AFFILIATE_LINKS.INTERNACIONAL,
       bgClass: 'glass-btn-blue',
       iconClass: 'text-[#FFE600]',
-      badgeText: 'Importados',
+      badgeText: 'Mais Baratos 1º',
     },
   ];
 

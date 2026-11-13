@@ -1,11 +1,12 @@
 import { DealBadgeType } from '../types';
 
 export const AFFILIATE_LINKS = {
-  TODAS: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&matt_tool=sm20240625081530',
-  RELAMPAGO: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning&matt_tool=sm20240625081530',
-  IMBATIVEL: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579&matt_tool=sm20240625081530',
-  INTERNACIONAL: 'https://www.mercadolivre.com.br/ofertas?container_id=MLB1442406-1&matt_tool=sm20240625081530',
+  TODAS: 'https://lista.mercadolivre.com.br/ofertas-do-dia?matt_tool=sm20240625081530',
+  RELAMPAGO: 'https://lista.mercadolivre.com.br/ofertas-relampago_OrderId_PRICE_NoIndex_True?matt_tool=sm20240625081530',
+  IMBATIVEL: 'https://lista.mercadolivre.com.br/promocoes-imperdiveis?matt_tool=sm20240625081530',
+  INTERNACIONAL: 'https://lista.mercadolivre.com.br/compra-internacional_OrderId_PRICE_NoIndex_True?matt_tool=sm20240625081530',
   ENTREGA_24H: 'https://www.mercadolivre.com.br/ofertas?shipping_cost=fulfillment&shipping=fulfillment&matt_tool=sm20240625081530',
+  MAIS_VENDIDOS: 'https://www.mercadolivre.com.br/mais-vendidos?matt_tool=sm20240625081530',
 };
 
 /**
@@ -39,6 +40,25 @@ export function cleanProductSearchQuery(title: string): string {
 }
 
 /**
+ * Cria uma URL de busca no Mercado Livre garantindo a ordenação do MENOR PARA O MAIOR PREÇO
+ */
+export function buildLowestPriceSearchUrl(searchTerm: string, affiliateTag = 'sm20240625081530'): string {
+  const cleanTerm = cleanProductSearchQuery(searchTerm);
+  if (!cleanTerm) {
+    return AFFILIATE_LINKS.TODAS;
+  }
+
+  const slug = cleanTerm
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+  return `https://lista.mercadolivre.com.br/${slug}_OrderId_PRICE_NoIndex_True?matt_tool=${affiliateTag}`;
+}
+
+/**
  * Gera a URL DIRETA para compra do produto específico no Mercado Livre.
  * Se o link for um link genérico (container de ofertas sem o produto),
  * direciona o cliente diretamente para a página de compra do produto exato com tag de comissão.
@@ -65,21 +85,19 @@ export function getDirectProductPurchaseUrl(
     return cleanUrl;
   }
 
-  // 2. Se for um link de busca já parametrizada com o produto específico
-  if (cleanUrl.includes('q=') || cleanUrl.includes('lista.mercadolivre.com.br')) {
-    if (!cleanUrl.includes('matt_tool')) {
-      const sep = cleanUrl.includes('?') ? '&' : '?';
-      return `${cleanUrl}${sep}matt_tool=sm20240625081530`;
+  // 2. Se for link de busca no Mercado Livre, garante o sufixo _OrderId_PRICE_NoIndex_True
+  if (cleanUrl.includes('lista.mercadolivre.com.br')) {
+    let baseUrl = cleanUrl.split('?')[0];
+    if (!baseUrl.includes('_OrderId_PRICE')) {
+      baseUrl = `${baseUrl}_OrderId_PRICE_NoIndex_True`;
     }
-    return cleanUrl;
+    return `${baseUrl}?matt_tool=sm20240625081530`;
   }
 
-  // 3. Se for link de container genérico ou ausente, gera o link de compra direto para o produto no Mercado Livre
+  // 3. Se for busca a partir do título do produto, constrói URL com menor preço garantido
   const query = cleanProductSearchQuery(productTitle);
   if (query.length > 0) {
-    const encoded = encodeURIComponent(query);
-    // lista.mercadolivre.com.br leva direto à lista de compra daquele produto exato com a comissão do afiliado
-    return `https://lista.mercadolivre.com.br/${encoded}?matt_tool=sm20240625081530`;
+    return buildLowestPriceSearchUrl(query);
   }
 
   // 4. Fallback final

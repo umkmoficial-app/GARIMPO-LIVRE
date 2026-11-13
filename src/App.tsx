@@ -9,10 +9,10 @@ import { Header } from './components/Header';
 import { CountdownTimer } from './components/CountdownTimer';
 import { HeroSearch } from './components/HeroSearch';
 import { QuickDealsGrid } from './components/QuickDealsGrid';
+import { BestSellersBanner } from './components/BestSellersBanner';
 import { FastDeliveryBanner } from './components/FastDeliveryBanner';
 import { ProductCard } from './components/ProductCard';
 import { PedirGarimpoModal } from './components/PedirGarimpoModal';
-import { DeliveryExplainerCard } from './components/DeliveryExplainerCard';
 import { AntiFraudCard } from './components/AntiFraudCard';
 import { TrustBadgesRow } from './components/TrustBadgesRow';
 import { TrustFooter } from './components/TrustFooter';
@@ -90,25 +90,29 @@ export default function App() {
     };
   }, [currentBatchIndex, addToast]);
 
-  // Substituição por indisponibilidade garantindo que NUNCA haja produtos repetidos na vitrine
+  // Substituição por indisponibilidade (ou aviso quando operando em lote único de 5 ofertas)
   const handleMarkUnavailable = useCallback(
     (productId: string) => {
-      setProductsList((prev) => {
-        const currentIds = prev.map((p) => p.id);
-        const replacement = getReplacementProduct(currentIds);
-        if (!replacement) return prev;
+      const currentIds = productsList.map((p) => p.id);
+      const replacement = getReplacementProduct(currentIds);
 
-        // Substitui mantendo todos os 5 produtos estritamente únicos
-        return prev.map((p) => (p.id === productId ? replacement : p));
-      });
+      if (!replacement) {
+        addToast(
+          'Lote Único de 5 Ofertas',
+          'A vitrine está trabalhando exclusivamente com este lote de 5 produtos oficiais.',
+          'info'
+        );
+        return;
+      }
 
+      setProductsList((prev) => prev.map((p) => (p.id === productId ? replacement : p)));
       addToast(
         'Produto Substituído!',
         'Item esgotado substituído por outra oferta oficial disponível sem repetição.',
         'success'
       );
     },
-    [addToast]
+    [productsList, addToast]
   );
 
   const handlePedirGarimpoSubmit = (query: string) => {
@@ -228,21 +232,18 @@ export default function App() {
           ))}
         </div>
 
-        {/* CARD PRODUTOS COM ENTREGA EM ATÉ 24 HORAS (FULL) - DIRETAMENTE EM CIMA DO CARD IA DE PROTEÇÃO ATIVA */}
-        <FastDeliveryBanner isLargeFont={isLargeFont} />
+        {/* CARD PRODUTOS MAIS VENDIDOS DO MERCADO LIVRE */}
+        <BestSellersBanner isLargeFont={isLargeFont} />
 
         {/* CARD IA DE PROTEÇÃO ATIVA */}
         <AntiFraudCard isLargeFont={isLargeFont} />
 
-        {/* Selos Visuais de Confiança: Compra Garantida & Mercado Pontos */}
+        {/* CARD PRODUTOS COM ENTREGA EM ATÉ 24 HORAS (FULL) - DEBAIXO DO CARD IA DE PROTEÇÃO ATIVA */}
+        <FastDeliveryBanner isLargeFont={isLargeFont} />
+
+        {/* Selo Visual de Confiança: Compra Garantida */}
         <TrustBadgesRow isLargeFont={isLargeFont} />
       </main>
-
-      {/* 6. CARD EXPLICATIVO: PROCESSO DE COMPRA E LOGÍSTICA MERCADO LIVRE */}
-      <DeliveryExplainerCard
-        isLargeFont={isLargeFont}
-        onOpenPedirGarimpo={() => setIsPedirGarimpoOpen(true)}
-      />
 
       {/* 7. MODAL PEDIR GARIMPO */}
       <PedirGarimpoModal
